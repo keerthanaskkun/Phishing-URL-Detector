@@ -1,0 +1,198 @@
+/* Base Theme Variables */
+:root {
+  --bg: linear-gradient(135deg, #e6e6fa, #d0e0ff);
+  --text: #2a2a2a;
+  --card-bg: rgba(255, 255, 255, 0.25);
+  --border: rgba(255, 255, 255, 0.6);
+  --input-bg: rgba(255, 255, 255, 0.35);
+  --btn-bg: #8e44ad;
+  --btn-hover: #5e2b91;
+  --glow: 0 0 16px rgba(138, 43, 226, 0.4);
+}
+
+body.dark {
+  --bg: radial-gradient(circle, #0f172a 0%, #111827 100%);
+  --text: #f9f9f9;
+  --card-bg: rgba(30, 30, 30, 0.6);
+  --border: rgba(255, 255, 255, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --btn-bg: #00bcd4;
+  --btn-hover: #008c9e;
+  --glow: 0 0 14px rgba(0, 255, 255, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Floating Particles */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: float 60s linear infinite;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+@keyframes float {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-50px, -100px);
+  }
+}
+
+/* Card */
+.glass-card {
+  position: relative;
+  backdrop-filter: blur(18px);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow);
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  z-index: 2;
+}
+
+/* Title */
+.title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+/* Input */
+input {
+  width: 90%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: var(--input-bg);
+  color: var(--text);
+  margin-bottom: 20px;
+  box-shadow: inset var(--glow);
+}
+
+input:focus {
+  outline: 2px solid var(--btn-bg);
+}
+
+/* Button */
+button {
+  padding: 12px 28px;
+  font-size: 16px;
+  background-color: var(--btn-bg);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: var(--glow);
+  transition: transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background-color: var(--btn-hover);
+  transform: scale(1.05);
+}
+
+/* Sparkle effect on click */
+button::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  background: radial-gradient(circle, white 10%, transparent 10.01%);
+  background-repeat: repeat;
+  background-size: 10px 10px;
+  top: 0;
+  left: -10%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+button:active::after {
+  opacity: 0.4;
+  animation: sparkle 0.4s linear;
+}
+
+@keyframes sparkle {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Result text */
+#result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 3;
+  position: relative;
+}
+
+/* Theme toggle */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 999;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.3) rotate(10deg);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .glass-card {
+    padding: 25px 20px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  input, button {
+    width: 100%;
+  }
+
+  .theme-toggle {
+    font-size: 24px;
+  }
+}

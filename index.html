@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phishing URL Detection Tool</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" onclick="toggleTheme()" id="themeIcon">🔓</div>
+
+  <!-- Glowing Glass Card -->
+  <div class="glass-card">
+    <h1 class="title">Phishing URL Detector</h1>
+    
+    <input type="text" id="urlInput" placeholder="Enter a URL to verify" />
+    
+    <button onclick="checkURL()">Analyze</button>
+    
+    <p id="result"></p>
+  </div>
+</body>
+</html>
