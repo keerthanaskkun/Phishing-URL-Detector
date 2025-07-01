@@ -20,7 +20,8 @@ function checkURL() {
   result.innerText = "Analyzing...";
   result.style.color = "#777";
 
-  fetch("http://127.0.0.1:5000/predict", {
+  // 🔁 UPDATED BACKEND URL HERE
+  fetch("https://phishing-url-detector-backend.onrender.com/predict", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ url: url })
